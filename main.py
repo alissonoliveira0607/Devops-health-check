@@ -1,14 +1,23 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import time
 import requests
 import os
 import json
 from dotenv import load_dotenv
+import logging
 
 # Carregar as variáveis de ambiente do arquivo .env
 load_dotenv()
 
 app = Flask(__name__)
+
+# Configuração de logging
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s [%(levelname)s] - %(message)s',
+                    handlers=[
+                        logging.FileHandler('access.log'),
+                        logging.StreamHandler()
+                    ])
 
 # Utilizar as variáveis de ambiente para as configurações
 API_URL = os.getenv('API_URL')
@@ -20,7 +29,7 @@ def check_api_health(headers, payload):
         return response.status_code == 200
 
     except Exception as e:
-        print(f"Erro na verificação da API: {e}")
+        logging.error(f"Erro na verificação da API: {e}")
         return False
 
 def perform_health_check(headers, payload):
