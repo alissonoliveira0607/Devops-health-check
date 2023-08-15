@@ -17,8 +17,9 @@ git clone https://github.com/seu-usuario/seu-repositorio.git
 ```
 
 ## Acesse o diretório da aplicação
+```shell
 cd seu-repositorio
-
+```
 
 ## Instale as dependências:
 ```python
@@ -27,8 +28,8 @@ pip install -r requirements.txt
 
 ## Variáveis de Ambiente:
 Crie um arquivo .env no mesmo diretório do arquivo main.py com as seguintes variáveis de ambiente:
-# API_URL=endpoint
-# API_AUTH_TOKEN=Bearer seu_token
+- API_URL=endpoint
+- API_AUTH_TOKEN=Bearer seu_token
 Substitua os valores de API_URL e API_AUTH_TOKEN pelas informações apropriadas da sua configuração.
 
 Configurações de Headers e body
@@ -62,11 +63,11 @@ python main.py
 Com Docker
 Construa a imagem Docker:
 No diretório que encontra-se o Dockerfile execute o seguinte comando
-# docker build -t health-check-app .
+- docker build -t health-check-app .
 
 
 Execute o contêiner:
-# docker run -p 5000:5000 --env-file .env health-check-app
+- docker run -p 5000:5000 --env-file .env health-check-app
 
 
 Acesse a aplicação no navegador em http://localhost:5000/health.
