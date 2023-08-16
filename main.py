@@ -33,10 +33,10 @@ def check_api_health(headers, payload):
         return False
 
 def perform_health_check(headers, payload):
-    jadlog_api_health = check_api_health(headers, payload)
+    api_health = check_api_health(headers, payload)
     # Adicione outras verificações aqui, se necessário
 
-    return jadlog_api_health
+    return api_health
 
 @app.route('/health', methods=['GET'])
 def health_check():
